@@ -9,9 +9,9 @@ const socket = io("http://localhost:3000");
 socket.on("connect", () => {
     displayMessage(`You connected with id: ${socket.id}`);
 });
-
-// socket.emit('string', number, Object, Whatever you want)
-socket.emit("custom-event", 10, "Hi", { a: "hello" });
+socket.on("received-msg", (message) => {
+    displayMessage(message);
+});
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ form.addEventListener("submit", (e) => {
 
     if (message.trim() === "") return;
     displayMessage(message);
+    socket.emit("send-msg", message);
     messageInuput.value = "";
 });
 

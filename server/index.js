@@ -6,7 +6,8 @@ const io = require("socket.io")(3000, {
 
 io.on("connection", (socket) => {
     console.log(socket.id);
-    socket.on("custom-event", (number, string, obj) => {
-        console.log(number, string, obj);
+    socket.on("send-msg", (message) => {
+      socket.broadcast.emit('received-msg', message)
+        console.log(message);
     });
 });
