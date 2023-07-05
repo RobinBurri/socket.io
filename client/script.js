@@ -20,7 +20,7 @@ form.addEventListener("submit", (e) => {
 
     if (message.trim() === "") return;
     displayMessage(message);
-    socket.emit("send-msg", message);
+    socket.emit("send-msg", message, room);
     messageInuput.value = "";
 });
 
