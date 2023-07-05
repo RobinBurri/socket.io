@@ -1,11 +1,7 @@
-import { io } from "socket.io-client";
-
 const joinRoomButton = document.getElementById("room-button");
 const messageInuput = document.getElementById("message-input");
 const roomInput = document.getElementById("room-input");
 const form = document.getElementById("form");
-
-const socket = io("http://localhost:3000");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -17,7 +13,7 @@ form.addEventListener("submit", (e) => {
   messageInuput.value = "";
 });
 
-joinRommoButton.addEventListener("click", (e) => {
+joinRoomButton.addEventListener("click", (e) => {
   e.preventDefault();
   const room = roomInput.value;
 });
