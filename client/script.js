@@ -6,6 +6,12 @@ const roomInput = document.getElementById("room-input");
 const form = document.getElementById("form");
 
 const socket = io("http://localhost:3000");
+socket.on("connect", () => {
+    displayMessage(`You connected with id: ${socket.id}`);
+});
+
+// socket.emit('string', number, Object, Whatever you want)
+socket.emit("custom-event", 10, "Hi", { a: "hello" });
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
