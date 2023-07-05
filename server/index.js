@@ -8,11 +8,15 @@ io.on("connection", (socket) => {
     console.log(socket.id);
     socket.on("send-msg", (message, room) => {
         if (room === "") {
-          // broadcast => to everyone except sender
+            // broadcast => to everyone except sender
             socket.broadcast.emit("received-msg", message);
         } else {
-          // broadcast is included in to()
+            // broadcast is included in to()
             socket.to(room).emit("received-msg", message);
         }
+    });
+
+    socket.on("join-room", (room) => {
+        socket.join(room);
     });
 });
