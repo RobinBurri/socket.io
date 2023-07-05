@@ -27,7 +27,9 @@ form.addEventListener("submit", (e) => {
 joinRoomButton.addEventListener("click", (e) => {
     e.preventDefault();
     const room = roomInput.value;
-    socket.emit('join-room', room)
+    socket.emit("join-room", room, msg => {
+      displayMessage(msg)
+    });
 });
 
 const displayMessage = (message) => {
